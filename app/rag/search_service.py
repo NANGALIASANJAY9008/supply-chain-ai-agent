@@ -1,59 +1,171 @@
-from app.rag.embedding_service import (
-    generate_embeddings,
+import json
+import re
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+
+METADATA_PATH = (
+    PROJECT_ROOT
+    / "vectorstore"
+    / "metadata.json"
 )
 
-from app.rag.vector_store import (
-    load_faiss_index,
-    load_metadata,
-)
 
+# ============================================================
+# TEXT TOKENIZATION
+# ============================================================
+
+STOP_WORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "by",
+    "for",
+    "from",
+    "how",
+    "in",
+    "is",
+    "it",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "what",
+    "when",
+    "where",
+    "which",
+    "who",
+    "with",
+}
+
+
+def tokenize(text: str) -> set[str]:
+    """
+    Convert text into a lightweight set of
+    meaningful lowercase words.
+    """
+
+    words = re.findall(
+        r"\b[a-zA-Z0-9]+\b",
+        text.lower(),
+    )
+
+    return {
+        word
+        for word in words
+        if word not in STOP_WORDS
+        and len(word) > 2
+    }
+
+
+# ============================================================
+# LOAD DOCUMENT METADATA
+# ============================================================
+
+def load_metadata() -> list[dict]:
+    """
+    Load the small document metadata file.
+    """
+
+    if not METADATA_PATH.exists():
+        raise FileNotFoundError(
+            f"Metadata file not found: "
+            f"{METADATA_PATH}"
+        )
+
+    with open(
+        METADATA_PATH,
+        "r",
+        encoding="utf-8",
+    ) as file:
+
+        return json.load(file)
+
+
+# ============================================================
+# LIGHTWEIGHT SEARCH
+# ============================================================
 
 def semantic_search(
     query: str,
     top_k: int = 3,
 ) -> list[dict]:
     """
-    Search the FAISS vector store using
-    semantic similarity.
-    """
+    Lightweight document retrieval.
 
-    index = load_faiss_index()
+    This intentionally avoids:
+    - SentenceTransformer
+    - PyTorch
+    - FAISS
+    - embedding models
+
+    This keeps memory usage very low for
+    Render's 512 MB Free instance.
+    """
 
     metadata = load_metadata()
 
-    query_embedding = generate_embeddings(
-        [query]
-    )
+    if not metadata:
+        return []
 
-    query_vector = query_embedding[0]
+    query_words = tokenize(query)
 
-    scores, indices = index.search(
-        __import__("numpy").array(
-            [query_vector],
-            dtype="float32",
-        ),
-        top_k,
-    )
+    if not query_words:
+        return []
 
-    results = []
+    scored_results = []
 
-    for score, index_id in zip(
-        scores[0],
-        indices[0],
-    ):
+    for chunk in metadata:
 
-        if index_id < 0:
+        text = chunk.get(
+            "text",
+            "",
+        )
+
+        chunk_words = tokenize(text)
+
+        if not chunk_words:
             continue
 
-        chunk = metadata[index_id]
+        # Number of query words appearing
+        # in the document chunk.
+        overlap = query_words.intersection(
+            chunk_words
+        )
 
-        results.append(
+        if not overlap:
+            continue
+
+        # Basic relevance score.
+        score = (
+            len(overlap)
+            / len(query_words)
+        )
+
+        # Small bonus when the exact query
+        # phrase appears in the document.
+        if query.lower() in text.lower():
+            score += 0.25
+
+        scored_results.append(
             {
-                "score": float(score),
+                "score": min(score, 1.0),
                 "source": chunk["source"],
                 "chunk_id": chunk["chunk_id"],
-                "text": chunk["text"],
+                "text": text,
             }
         )
 
-    return results
+    # Highest relevance first.
+    scored_results.sort(
+        key=lambda result: result["score"],
+        reverse=True,
+    )
+
+    return scored_results[:top_k]
