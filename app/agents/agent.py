@@ -37,9 +37,6 @@ from app.agents.dynamic_sql import (
     execute_dynamic_query,
 )
 
-from app.rag.rag_service import (
-    answer_question,
-)
 
 from app.rag.llm_service import (
     client,
@@ -725,6 +722,8 @@ def ask_supply_chain_agent(
 
     elif route == "RAG":
 
+        from app.rag.rag_service import answer_question
+        
         rag_result = answer_question(
             question,
             top_k=3,
