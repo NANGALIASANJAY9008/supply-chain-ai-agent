@@ -1,0 +1,71 @@
+SUPPLY CHAIN PROCUREMENT POLICY
+
+Document ID: PROC-001
+Version: 1.0
+
+1. PURPOSE
+
+This policy defines the standard procurement process for purchasing
+products, raw materials, components, equipment, and other goods required
+for supply chain operations.
+
+2. PURCHASE REQUEST
+
+All procurement activities must begin with a valid purchase request.
+
+The purchase request should contain:
+
+- Product or material identification
+- Required quantity
+- Required delivery date
+- Requesting department
+- Business justification
+- Preferred supplier, if applicable
+
+3. SUPPLIER SELECTION
+
+Suppliers should be evaluated based on:
+
+- Product quality
+- Reliability
+- Historical delivery performance
+- Lead time
+- Pricing
+- Contract terms
+- Compliance requirements
+
+Supplier reliability and historical delivery performance should be
+considered when selecting suppliers for critical products.
+
+4. APPROVAL
+
+Purchase requests must be reviewed before an order is placed.
+
+High-value purchases may require additional management approval.
+
+5. EMERGENCY PROCUREMENT
+
+Emergency procurement may be used when a critical product or material
+is required to prevent operational disruption.
+
+Emergency purchases should be documented and reviewed after the purchase.
+
+6. PURCHASE ORDER
+
+A purchase order should include:
+
+- Product identification
+- Quantity
+- Agreed price
+- Supplier
+- Expected delivery date
+- Delivery location
+- Applicable terms and conditions
+
+7. RECORD KEEPING
+
+Procurement records should be retained for audit and operational
+purposes.
+
+Relevant records include purchase requests, purchase orders, supplier
+information, invoices, delivery records, and approval records.

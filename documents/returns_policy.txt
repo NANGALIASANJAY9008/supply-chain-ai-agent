@@ -1,0 +1,48 @@
+SUPPLY CHAIN RETURNS POLICY
+
+Document ID: RET-001
+Version: 1.0
+
+1. PURPOSE
+
+This policy defines the general process for handling returned products
+and materials.
+
+2. RETURN CONDITIONS
+
+A return may be considered when products are:
+
+- Damaged
+- Defective
+- Incorrectly supplied
+- Not compliant with agreed specifications
+
+3. RETURN REQUEST
+
+A return request should include:
+
+- Product identification
+- Order identification
+- Quantity
+- Reason for return
+- Supporting evidence when required
+
+4. SUPPLIER NOTIFICATION
+
+The supplier should be informed when a return is related to supplier
+performance or product quality.
+
+5. INSPECTION
+
+Returned products may require inspection before the final disposition
+is determined.
+
+6. REPLACEMENT
+
+Where appropriate, the supplier may provide replacement products
+according to the applicable agreement.
+
+7. RECORD KEEPING
+
+Return records should be maintained for supplier performance analysis,
+quality management, and audit purposes.

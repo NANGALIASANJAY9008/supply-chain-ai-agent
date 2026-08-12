@@ -1,0 +1,51 @@
+[
+    {
+        "question": "When should inventory be reordered?",
+        "expected_source": "inventory_policy.txt",
+        "expected_keywords": [
+            "available stock",
+            "reorder level"
+        ]
+    },
+    {
+        "question": "How is available stock calculated?",
+        "expected_source": "inventory_policy.txt",
+        "expected_keywords": [
+            "current stock",
+            "reserved stock"
+        ]
+    },
+    {
+        "question": "How are suppliers evaluated?",
+        "expected_source": "supplier_policy.txt",
+        "expected_keywords": [
+            "reliability",
+            "delivery",
+            "lead time"
+        ]
+    },
+    {
+        "question": "What happens when supplier delivery performance is poor?",
+        "expected_source": "delivery_policy.txt",
+        "expected_keywords": [
+            "corrective action",
+            "supplier"
+        ]
+    },
+    {
+        "question": "What products can be returned?",
+        "expected_source": "returns_policy.txt",
+        "expected_keywords": [
+            "damaged",
+            "defective"
+        ]
+    },
+    {
+        "question": "What is the emergency procurement policy?",
+        "expected_source": "procurement_policy.txt",
+        "expected_keywords": [
+            "emergency",
+            "critical"
+        ]
+    }
+]

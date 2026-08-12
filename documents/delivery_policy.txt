@@ -1,0 +1,43 @@
+SUPPLIER DELIVERY POLICY
+
+Document ID: DEL-001
+Version: 1.0
+
+1. DELIVERY EXPECTATIONS
+
+Suppliers are expected to deliver products according to the agreed
+purchase order schedule.
+
+2. EXPECTED DELIVERY DATE
+
+The expected delivery date is the date agreed for delivery of the order.
+
+3. LATE DELIVERY
+
+An order is considered late when the actual delivery occurs after the
+expected delivery date.
+
+4. DELIVERY DELAYS
+
+Delivery delays should be monitored because they can affect:
+
+- Production
+- Customer fulfillment
+- Inventory availability
+- Operating costs
+- Emergency procurement requirements
+
+5. SUPPLIER PERFORMANCE
+
+Repeated late deliveries should be included in supplier performance
+evaluation.
+
+6. CORRECTIVE ACTION
+
+When delivery performance is consistently poor, the organization may
+request corrective action from the supplier.
+
+7. CRITICAL PRODUCTS
+
+Critical products with high operational impact should receive additional
+monitoring when delivery delays may create stock-out risk.

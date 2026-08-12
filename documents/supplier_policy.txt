@@ -1,0 +1,59 @@
+SUPPLIER MANAGEMENT POLICY
+
+Document ID: SUP-001
+Version: 1.0
+
+1. PURPOSE
+
+This policy defines how suppliers are evaluated, monitored, and managed.
+
+2. SUPPLIER PERFORMANCE
+
+Supplier performance should be monitored using measurable indicators.
+
+Important indicators include:
+
+- Reliability score
+- Average delivery delay
+- Lead time
+- Product quality
+- Order fulfillment performance
+
+3. SUPPLIER RELIABILITY
+
+A supplier with a higher reliability score is generally preferred over
+a supplier with a lower reliability score when other commercial factors
+are comparable.
+
+4. DELIVERY PERFORMANCE
+
+Repeated delivery delays should trigger supplier performance review.
+
+Suppliers with consistently high average delivery delays may require:
+
+- Corrective action
+- Performance review
+- Renegotiation
+- Alternative sourcing
+
+5. SUPPLIER REVIEW
+
+Supplier performance should be reviewed periodically.
+
+Critical suppliers should receive additional monitoring when their
+performance may affect business continuity.
+
+6. SUPPLIER RISK
+
+Supplier risk may increase when:
+
+- Reliability decreases
+- Delivery delays increase
+- Lead times become unpredictable
+- Product quality deteriorates
+- A supplier becomes difficult to replace
+
+7. ALTERNATIVE SUPPLIERS
+
+For critical products, organizations should consider maintaining
+alternative suppliers when commercially and operationally practical.

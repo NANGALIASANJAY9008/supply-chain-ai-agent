@@ -1,0 +1,56 @@
+INVENTORY MANAGEMENT POLICY
+
+Document ID: INV-001
+Version: 1.0
+
+1. PURPOSE
+
+This policy defines principles for maintaining adequate inventory while
+controlling excess inventory.
+
+2. CURRENT STOCK
+
+Current stock represents the physical inventory available at a warehouse.
+
+3. RESERVED STOCK
+
+Reserved stock represents inventory that has been allocated to existing
+requirements and should not normally be treated as freely available stock.
+
+4. AVAILABLE STOCK
+
+Available stock is calculated as:
+
+Available Stock = Current Stock - Reserved Stock
+
+5. REORDER LEVEL
+
+The reorder level represents the inventory threshold at which replenishment
+should be considered.
+
+When available stock falls below the reorder level, the product should be
+reviewed for replenishment.
+
+6. LOW STOCK
+
+A product is considered low stock when:
+
+Available Stock < Reorder Level
+
+Low-stock products should be prioritized according to operational
+criticality and expected demand.
+
+7. INCOMING INVENTORY
+
+Incoming inventory represents stock expected from replenishment or
+supplier orders.
+
+Incoming stock should be considered when assessing future inventory
+availability.
+
+8. INVENTORY REVIEW
+
+Inventory levels should be reviewed regularly for critical products.
+
+Excess inventory should also be monitored because excessive stock can
+increase storage and working-capital costs.
