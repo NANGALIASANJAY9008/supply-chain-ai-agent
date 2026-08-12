@@ -1,9 +1,20 @@
+import os
 import sqlite3
 from pathlib import Path
 
+import psycopg2
+from dotenv import load_dotenv
+
 
 # ============================================================
-# DATABASE PATH
+# LOAD ENVIRONMENT VARIABLES
+# ============================================================
+
+load_dotenv()
+
+
+# ============================================================
+# SQLITE CONFIGURATION
 # ============================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -19,18 +30,33 @@ DATABASE_PATH = (
 # DATABASE CONNECTION
 # ============================================================
 
-def get_db_connection() -> sqlite3.Connection:
+def get_db_connection():
     """
-    Create and return a connection to the
-    Supply Chain SQLite database.
+    Return a database connection.
+
+    If DATABASE_URL is configured, PostgreSQL is used.
+    Otherwise, local SQLite is used.
     """
+
+    database_url = os.getenv("DATABASE_URL")
+
+    # --------------------------------------------------------
+    # PostgreSQL
+    # --------------------------------------------------------
+
+    if database_url:
+        return psycopg2.connect(
+            database_url
+        )
+
+    # --------------------------------------------------------
+    # Local SQLite fallback
+    # --------------------------------------------------------
 
     connection = sqlite3.connect(
         DATABASE_PATH
     )
 
-    # Return rows that can be accessed
-    # using column names as well as indexes.
     connection.row_factory = sqlite3.Row
 
     return connection
@@ -42,21 +68,31 @@ def get_db_connection() -> sqlite3.Connection:
 
 def check_database_connection() -> bool:
     """
-    Check whether the database is accessible.
+    Check whether the configured database is accessible.
     """
+
+    connection = None
 
     try:
 
         connection = get_db_connection()
 
-        connection.execute(
+        cursor = connection.cursor()
+
+        cursor.execute(
             "SELECT 1"
         )
 
+        cursor.fetchone()
+
+        cursor.close()
         connection.close()
 
         return True
 
-    except sqlite3.Error:
+    except Exception:
+
+        if connection:
+            connection.close()
 
         return False

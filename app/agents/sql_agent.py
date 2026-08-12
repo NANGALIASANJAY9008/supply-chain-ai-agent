@@ -1,32 +1,13 @@
 import re
-import sqlite3
-from pathlib import Path
+
+from app.database.connection import get_db_connection
 
 
 # ============================================================
 # DATABASE CONFIGURATION
-# ============================================================
-
-PROJECT_ROOT = (
-    Path(__file__).resolve().parent.parent.parent
-)
-
-DATABASE_PATH = (
-    PROJECT_ROOT
-    / "database"
-    / "supply_chain.db"
-)
-
-
-# ============================================================
-# DATABASE CONNECTION
-# ============================================================
 
 def get_connection():
-
-    return sqlite3.connect(
-        DATABASE_PATH
-    )
+    return get_db_connection()
 
 
 # ============================================================
@@ -100,7 +81,7 @@ def product_lookup(
             reorder_level,
             warehouse
         FROM products
-        WHERE product_id = ?
+        WHERE product_id = %s
         """,
         (product_id,),
     )
@@ -146,7 +127,7 @@ def inventory_lookup(
             reorder_level,
             last_restock_date
         FROM inventory
-        WHERE product_id = ?
+        WHERE product_id = %s
         """,
         (product_id,),
     )
@@ -202,7 +183,7 @@ def supplier_lookup(
             reliability_score,
             average_delay_days
         FROM suppliers
-        WHERE supplier_id = ?
+        WHERE supplier_id = %s
         """,
         (supplier_id,),
     )
@@ -250,7 +231,7 @@ def order_lookup(
             total_value,
             status
         FROM orders
-        WHERE order_id = ?
+        WHERE order_id = %s
         """,
         (order_id,),
     )
@@ -461,7 +442,7 @@ def orders_by_product(
             total_value,
             status
         FROM orders
-        WHERE product_id = ?
+        WHERE product_id = %s
         ORDER BY order_date DESC
         LIMIT 20
         """,
